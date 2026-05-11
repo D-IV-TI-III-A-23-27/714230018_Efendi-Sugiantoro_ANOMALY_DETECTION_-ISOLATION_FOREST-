@@ -1,0 +1,24 @@
+<svg width="400" height="250" viewBox="0 0 400 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Grid -->
+  <line x1="50" y1="200" x2="350" y2="200" stroke="#E2E8F0" stroke-width="2" />
+  <line x1="50" y1="50" x2="50" y2="200" stroke="#E2E8F0" stroke-width="2" />
+  
+  <!-- Anomaly Bar -->
+  <rect x="100" y="140" width="60" height="60" fill="#F43F5E" rx="4">
+    <animate attributeName="height" from="0" to="60" dur="1s" fill="freeze" />
+    <animate attributeName="y" from="200" to="140" dur="1s" fill="freeze" />
+  </rect>
+  <text x="130" y="220" text-anchor="middle" font-family="Arial" font-size="12" fill="#F43F5E" font-weight="bold">Anomali</text>
+  <text x="130" y="130" text-anchor="middle" font-family="Arial" font-size="12" fill="#F43F5E" font-weight="bold">Pendek</text>
+  
+  <!-- Normal Bar -->
+  <rect x="240" y="60" width="60" height="140" fill="#4F46E5" rx="4">
+    <animate attributeName="height" from="0" to="140" dur="1.5s" fill="freeze" />
+    <animate attributeName="y" from="200" to="60" dur="1.5s" fill="freeze" />
+  </rect>
+  <text x="270" y="220" text-anchor="middle" font-family="Arial" font-size="12" fill="#4F46E5" font-weight="bold">Normal</text>
+  <text x="270" y="50" text-anchor="middle" font-family="Arial" font-size="12" fill="#4F46E5" font-weight="bold">Panjang</text>
+  
+  <!-- Label Axis -->
+  <text x="20" y="125" transform="rotate(-90 20,125)" text-anchor="middle" font-family="Arial" font-size="10" fill="#94A3B8">Path Length h(x)</text>
+</svg>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isolation Forest | Artificial Intelligence Module</title>
+    
+    <!-- Meta SEO -->
+    <meta name="description" content="Modul Pembelajaran AI: Deteksi Anomali dengan Isolation Forest. Disusun secara profesional dan komprehensif.">
+    
+    <!-- External Resources -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/theme.js"></script>
+</head>
+<body class="antialiased transition-colors duration-300">
+
+    <!-- Cyber Navbar -->
+    <nav class="nav-glass fixed top-0 w-full z-50 py-4 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3 no-zoom">
+                <div class="w-10 h-10 bg-sky-500 rounded-lg flex items-center justify-center text-white shadow-[0_0_15px_rgba(56,189,248,0.5)]">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <span class="font-bold text-xl tracking-wider text-primary-theme uppercase">AI<span class="text-sky-500">Core</span></span>
+            </div>
+            
+            <!-- Tech Menu & Theme Switcher -->
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center gap-2 bg-accent-theme p-1 rounded-2xl border border-main">
+                    <button onclick="openTab('pengenalan')" id="btn-pengenalan" class="tab-btn px-6 py-2 rounded-xl text-sm font-semibold transition-all bg-sky-500 text-white">01. INTRO</button>
+                    <button onclick="openTab('teori')" id="btn-teori" class="tab-btn px-6 py-2 rounded-xl text-sm font-semibold transition-all text-muted-theme hover:text-sky-500 hover:bg-bg-accent">02. LOGIC</button>
+                    <button onclick="openTab('simulasi')" id="btn-simulasi" class="tab-btn px-6 py-2 rounded-xl text-sm font-semibold transition-all text-muted-theme hover:text-sky-500 hover:bg-bg-accent">03. SIMULASI</button>
+                    <button onclick="openTab('kesimpulan')" id="btn-kesimpulan" class="tab-btn px-6 py-2 rounded-xl text-sm font-semibold transition-all text-muted-theme hover:text-sky-500 hover:bg-bg-accent">04. FINAL</button>
+                </div>
+
+                <!-- Theme Toggle -->
+                <div class="flex items-center gap-1 bg-accent-theme p-1 rounded-2xl border border-main">
+                    <button onclick="setTheme('light')" data-theme-btn="light" class="p-2 rounded-xl text-sm transition-all flex items-center justify-center w-9 h-9" title="Light Mode">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <button onclick="setTheme('dark')" data-theme-btn="dark" class="p-2 rounded-xl text-sm transition-all flex items-center justify-center w-9 h-9" title="Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button onclick="setTheme('system')" data-theme-btn="system" class="p-2 rounded-xl text-sm transition-all flex items-center justify-center w-9 h-9" title="System Mode">
+                        <i class="fas fa-desktop"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20 px-6 max-w-7xl mx-auto min-h-screen">
+
+        <!-- SECTION 1: PENGENALAN (THE COMPREHENSIVE FOUNDATION) -->
+        <section id="pengenalan" class="tab-content active animate-step">
+            <!-- 0.1: Hirarki Pengetahuan (AI & ML) -->
+            <div class="tech-card p-12 mb-20 bg-gradient-to-br from-bg-card to-bg-accent border-b-4 border-b-sky-500">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-8">
+                        <div>
+                            <span class="text-sky-600 dark:text-sky-400 font-mono tracking-[0.4em] text-sm uppercase mb-4 block">Academic_Foundation_V2.0</span>
+                            <h2 class="text-5xl font-black text-primary-theme leading-tight uppercase">Artificial <br><span class="text-sky-600 dark:text-sky-400 italic font-serif">Intelligence</span></h2>
+                        </div>
+                        <div class="grid grid-cols-1 gap-6">
+                            <!-- Definisi AI -->
+                            <div class="p-6 bg-accent-theme rounded-2xl border border-main transition-all">
+                                <h4 class="text-sky-600 dark:text-sky-400 font-bold mb-2 uppercase text-xs tracking-widest flex items-center gap-2">
+                                    <i class="fas fa-brain"></i> Apa itu AI? (Kecerdasan Buatan)
+                                </h4>
+                                <p class="text-[13px] text-body-theme leading-relaxed">
+                                    <b>AI</b> adalah entitas sains yang bertujuan membangun mesin cerdas yang mampu mensimulasikan kognisi manusia. Ini bukan sekadar program kaku, melainkan sistem yang mampu mengolah informasi untuk melakukan <b>Reasoning</b> (Penalaran) dan <b>Problem Solving</b> secara otonom.
+                                </p>
+                            </div>
+                            <!-- Definisi Machine Learning -->
+                            <div class="p-6 bg-accent-theme rounded-2xl border border-main transition-all">
+                                <h4 class="text-sky-600 dark:text-sky-400 font-bold mb-2 uppercase text-xs tracking-widest flex items-center gap-2">
+                                    <i class="fas fa-cogs"></i> Apa itu Machine Learning? (ML)
+                                </h4>
+                                <p class="text-[13px] text-body-theme leading-relaxed">
+                                    <b>ML</b> adalah sub-bidang AI yang memberikan mesin kemampuan untuk "belajar" dari data tanpa diprogram secara eksplisit. ML menggunakan metode statistik untuk memungkinkan algoritma menemukan pola dan melakukan prediksi berdasarkan pengalaman masa lalu.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <div class="p-4 bg-accent-theme rounded-[2.5rem] border border-main shadow-2xl overflow-hidden">
+                            <img src="assets/ai_concept.svg" alt="AI Concept" class="w-full h-auto transition-transform duration-1000 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 0.2: Konteks Data Mining & Anomali -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
+                <div class="space-y-10">
+                    <!-- Definisi Akademik Data Mining -->
+                    <div class="tech-card p-8 border-l-4 border-l-indigo-500 group">
+                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                            <div class="w-full md:w-1/3">
+                                <img src="assets/data_mining_concept.svg" alt="Data Mining Concept" class="w-full h-auto drop-shadow-[0_0_15px_rgba(129,140,248,0.3)] group-hover:scale-110 transition-transform duration-700">
+                            </div>
+                            <div class="w-full md:w-2/3">
+                                <h4 class="text-indigo-600 dark:text-indigo-400 font-bold mb-4 uppercase text-xs tracking-widest flex items-center gap-2">
+                                    <i class="fas fa-database"></i> 0.2.1: Data Mining (Ekstraksi Pengetahuan)
+                                </h4>
+                                <p class="text-sm text-body-theme leading-relaxed">
+                                    <b>Data Mining</b> adalah disiplin ilmu yang menggabungkan statistik, AI, dan manajemen database untuk mengekstraksi informasi non-trivial dari dataset raksasa. Tujuannya adalah mengubah data mentah menjadi <b>Actionable Knowledge</b> melalui proses pola penemuan (Pattern Discovery).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Definisi Akademik Anomaly Detection -->
+                    <div class="tech-card p-8 border-l-4 border-l-rose-500 group">
+                        <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+                            <div class="w-full md:w-1/3">
+                                <img src="assets/anomaly_detection_concept.svg" alt="Anomaly Detection Concept" class="w-full h-auto drop-shadow-[0_0_15px_rgba(244,63,94,0.3)] group-hover:scale-110 transition-transform duration-700">
+                            </div>
+                            <div class="w-full md:w-2/3">
+                                <h4 class="text-rose-600 dark:text-rose-400 font-bold mb-4 uppercase text-xs tracking-widest flex items-center gap-2">
+                                    <i class="fas fa-exclamation-triangle"></i> 0.2.2: Anomaly Detection (Identifikasi Penyimpangan)
+                                </h4>
+                                <p class="text-sm text-body-theme leading-relaxed">
+                                    <b>Anomaly Detection</b> adalah teknik untuk mengidentifikasi observasi yang tidak sesuai dengan perilaku mayoritas data. Dalam terminologi AI, anomali dianggap sebagai "data yang dihasilkan oleh proses yang berbeda" dari proses penghasil data normal.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topik Utama: Apa, Mengapa, Bagaimana -->
+                <div class="space-y-10">
+                    <div class="tech-card p-10 relative overflow-hidden group">
+                        <div class="absolute -right-20 -top-20 text-[15rem] text-primary-theme opacity-5 font-black group-hover:scale-110 transition-transform">AI</div>
+                        
+                        <span class="text-sky-600 dark:text-sky-400 font-mono tracking-[0.4em] text-sm uppercase mb-6 block">The_Core_Knowledge</span>
+                        <h1 class="text-5xl font-black text-primary-theme leading-tight uppercase mb-10">
+                            Anomaly Detection <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 font-serif font-light">(Isolation Forest)</span>
+                        </h1>
+
+                        <div class="grid grid-cols-1 gap-8">
+                            <!-- APA -->
+                            <div class="space-y-2">
+                                <h4 class="text-sky-600 dark:text-sky-400 font-bold uppercase text-xs tracking-widest">A. APA itu Isolation Forest?</h4>
+                                <p class="text-[13px] text-body-theme leading-relaxed italic">
+                                    "Sebuah algoritma berbasis pohon yang secara eksplisit mengisolasi anomali menggunakan struktur biner acak."
+                                </p>
+                                <p class="text-[11px] text-muted-theme">
+                                    Ini adalah metode <i>Unsupervised Learning</i> yang tidak membangun model "data normal", melainkan mencari "seberapa mudah sebuah data dipisahkan".
+                                </p>
+                            </div>
+
+                            <!-- MENGAPA -->
+                            <div class="space-y-2 border-t border-main pt-6">
+                                <h4 class="text-sky-600 dark:text-sky-400 font-bold uppercase text-xs tracking-widest">B. MENGAPA menggunakannya?</h4>
+                                <p class="text-[11px] text-body-theme leading-relaxed">
+                                    Metode tradisional (seperti KNN atau SVM) sangat "berat" secara komputasi dan sering gagal pada data berdimensi tinggi. <b>Isolation Forest</b> dipilih karena kecepatannya (kompleksitas linier) dan ketangguhannya terhadap dataset raksasa (Big Data).
+                                </p>
+                            </div>
+
+                            <!-- BAGAIMANA -->
+                            <div class="space-y-2 border-t border-main pt-6">
+                                <h4 class="text-sky-600 dark:text-sky-400 font-bold uppercase text-xs tracking-widest">C. BAGAIMANA cara kerjanya?</h4>
+                                <p class="text-[11px] text-body-theme leading-relaxed">
+                                    Melalui partisi acak, anomali yang jumlahnya sedikit dan fiturnya berbeda akan berakhir di cabang pohon yang sangat dangkal (<i>short path</i>). Kedalaman jalur inilah yang dikonversi menjadi <b>Anomaly Score</b>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analisis Visual -->
+            <div class="tech-card p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative overflow-hidden rounded-3xl group">
+                        <img src="assets/intro_hero.svg" alt="Anomaly Visual" class="w-full h-auto transition-transform duration-1000 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-bg-main via-transparent to-transparent"></div>
+                    </div>
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-bold text-primary-theme uppercase italic">Filosofi: The "Few and Different" Principle</h3>
+                        <p class="text-sm text-body-theme leading-relaxed">
+                            Secara matematis dan teoretis, anomali didefinisikan oleh dua sifat: <b>Few</b> (jumlahnya sedikit) dan <b>Different</b> (fiturnya sangat berbeda dari data normal). Karena dua sifat inilah, anomali jauh lebih rentan terhadap partisi acak, sehingga mereka "terisolasi" jauh lebih cepat daripada data normal.
+                        </p>
+                        <div class="p-4 bg-sky-500/10 rounded-2xl border border-sky-500/20 text-xs italic text-sky-600 dark:text-sky-400">
+                            "Semakin cepat terisolasi, semakin tinggi skor anomalinya."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ALGORITMA & TEORI (THE MECHANISM) -->
+        <section id="teori" class="tab-content animate-step">
+            <!-- 1.1: Arsitektur Global -->
+            <div class="tech-card p-10 mb-16">
+                <div class="flex flex-col items-center mb-12">
+                    <h2 class="text-3xl font-bold text-primary-theme mb-10 uppercase tracking-widest border-b-2 border-sky-500 pb-2">Global Architecture</h2>
+                    <img src="assets/architecture_diagram.svg" alt="Architecture" class="w-full max-w-4xl h-auto mb-10">
+                    <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="p-6 bg-accent-theme rounded-2xl border border-main">
+                            <h4 class="text-sky-600 dark:text-sky-400 font-bold mb-3 uppercase text-[10px] tracking-widest">01. Sub-Sampling</h4>
+                            <p class="text-xs text-body-theme">Mengambil sampel acak kecil untuk menghindari masalah <i>Masking</i> dan <i>Swamping</i>.</p>
+                        </div>
+                        <div class="p-6 bg-accent-theme rounded-2xl border border-main">
+                            <h4 class="text-sky-600 dark:text-sky-400 font-bold mb-3 uppercase text-[10px] tracking-widest">02. Ensemble Forest</h4>
+                            <p class="text-xs text-body-theme">Membangun ratusan iTrees secara independen untuk mendapatkan hasil yang objektif.</p>
+                        </div>
+                        <div class="p-6 bg-accent-theme rounded-2xl border border-main">
+                            <h4 class="text-sky-600 dark:text-sky-400 font-bold mb-3 uppercase text-[10px] tracking-widest">03. Final Scoring</h4>
+                            <p class="text-xs text-body-theme">Mengkalkulasi rata-rata panjang jalur dan menormalisasinya menjadi skor 0 - 1.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1.2: Data Mining Perspective -->
+            <div class="tech-card p-10 mb-16 border-r-4 border-r-sky-500 bg-accent-theme">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="p-4 bg-sky-500/5 rounded-3xl border border-sky-500/10">
+                        <img src="assets/data_mining_kdd.svg" alt="KDD Pipeline" class="w-full h-auto rounded-xl">
+                    </div>
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-primary-theme uppercase italic">Data Mining & KDD Context</h3>
+                        <p class="text-sm text-body-theme leading-relaxed">
+                            Dalam siklus <b>Knowledge Discovery in Databases (KDD)</b>, Deteksi Anomali berada di fase Data Mining. Ia bukan sekadar membersihkan data, tapi mengekstraksi pengetahuan krusial tentang kejadian-kejadian langka yang seringkali memiliki nilai bisnis atau keamanan yang sangat tinggi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1.3: iTree & Ensemble Logic -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <div class="tech-card p-8 space-y-6">
+                    <img src="assets/itree_logic.svg" alt="iTree Logic" class="w-full h-auto mb-4">
+                    <h4 class="text-lg font-bold text-primary-theme uppercase tracking-tighter italic">Mekanisme Partisi Rekursif</h4>
+                    <p class="text-xs text-body-theme leading-relaxed">
+                        Setiap iTree membagi ruang data secara biner. Semakin cepat sebuah data mencapai <i>leaf node</i> (daun), semakin tinggi indikasi anomalinya. Perhatikan bagaimana jalur anomali (Merah) jauh lebih pendek dibanding data normal.
+                    </p>
+                </div>
+                <div class="tech-card p-8 space-y-6">
+                    <img src="assets/ensemble_logic.svg" alt="Ensemble Logic" class="w-full h-auto mb-4">
+                    <h4 class="text-lg font-bold text-primary-theme uppercase tracking-tighter italic">Wisdom of the Crowd (Ensemble)</h4>
+                    <p class="text-xs text-body-theme leading-relaxed">
+                        Satu pohon bisa bias, tapi seratus pohon memberikan kebenaran statistik. Skor akhir dikumpulkan dari seluruh "Hutan" untuk meminimalkan kesalahan deteksi.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 1.4: Formulasi Matematika -->
+            <div class="formula-box p-10 rounded-[2.5rem] mb-16 shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-6">
+                        <div class="text-4xl font-mono text-center text-sky-600 dark:text-sky-400 mb-8 p-6 bg-bg-main rounded-3xl border border-main">
+                            s(x, n) = 2<sup>-[E(h(x)) / c(n)]</sup>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="text-primary-theme font-bold flex items-center gap-2 uppercase text-xs tracking-widest">
+                                <i class="fas fa-calculator text-sky-500"></i> Interpretasi Skor Anomali:
+                            </h4>
+                            <ul class="space-y-2 text-xs text-body-theme">
+                                <li>- <b>Skor ≈ 1.0:</b> Dipastikan Anomali (Path sangat pendek).</li>
+                                <li>- <b>Skor < 0.5:</b> Data Normal (Path dalam/dalam jangkauan rata-rata).</li>
+                                <li>- <b>Skor ≈ 0.5:</b> Tidak ada anomali yang signifikan dalam sampel.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="assets/path_comparison.svg" alt="Comparison" class="w-full h-auto filter drop-shadow-[0_0_15px_rgba(56,189,248,0.2)]">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manfaat & Penerapan Dunia Nyata -->
+            <div class="tech-card p-12 bg-gradient-to-br from-bg-card to-indigo-500/5 border-y-2 border-y-sky-500/20 mb-16 relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 text-[12rem] text-primary-theme opacity-5 font-black uppercase pointer-events-none">APPLY</div>
+                
+                <h3 class="text-3xl font-black text-primary-theme mb-12 uppercase tracking-widest flex items-center gap-4">
+                    <i class="fas fa-rocket text-sky-400"></i> Manfaat & Penerapan Dunia Nyata
+                </h3>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <!-- Keunggulan Utama -->
+                    <div class="space-y-8">
+                        <h4 class="text-xl font-bold text-sky-600 dark:text-sky-400 flex items-center gap-3">
+                            <i class="fas fa-check-double"></i> Keunggulan Utama
+                        </h4>
+                        <ul class="space-y-6">
+                            <li class="flex gap-5 group">
+                                <div class="w-12 h-12 bg-sky-500/20 rounded-2xl flex items-center justify-center flex-shrink-0 text-sky-600 dark:text-sky-400 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-primary-theme font-bold text-sm uppercase tracking-tighter">Sangat Cepat & Efisien</h5>
+                                    <p class="text-xs text-body-theme leading-relaxed mt-1">Memiliki kompleksitas waktu linier dengan penggunaan memori yang sangat rendah, ideal untuk Big Data.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-5 group">
+                                <div class="w-12 h-12 bg-indigo-500/20 rounded-2xl flex items-center justify-center flex-shrink-0 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-expand-arrows-alt"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-primary-theme font-bold text-sm uppercase tracking-tighter">Tanpa Perhitungan Jarak</h5>
+                                    <p class="text-xs text-body-theme leading-relaxed mt-1">Tidak menghitung jarak antar titik (seperti KNN), sehingga kebal terhadap <i>Curse of Dimensionality</i>.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-5 group">
+                                <div class="w-12 h-12 bg-rose-500/20 rounded-2xl flex items-center justify-center flex-shrink-0 text-rose-600 dark:text-rose-400 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-user-secret"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-primary-theme font-bold text-sm uppercase tracking-tighter">Unsupervised Learning</h5>
+                                    <p class="text-xs text-body-theme leading-relaxed mt-1">Tidak memerlukan data yang dilabeli sebelumnya untuk proses training, mempermudah implementasi.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Use Cases -->
+                    <div class="space-y-6">
+                        <h4 class="text-xl font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-3">
+                            <i class="fas fa-briefcase"></i> Use Case (Kasus Penggunaan)
+                        </h4>
+                        <div class="grid grid-cols-1 gap-4">
+                            <!-- CyberSec -->
+                            <div class="p-6 bg-accent-theme rounded-3xl border border-main hover:bg-bg-card-hover transition-all flex items-center gap-6">
+                                <div class="w-14 h-14 bg-sky-500/10 rounded-2xl flex items-center justify-center text-2xl text-sky-600 dark:text-sky-400">
+                                    <i class="fas fa-shield-virus"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-primary-theme font-bold text-sm uppercase tracking-widest">Cybersecurity</h5>
+                                    <p class="text-[10px] text-muted-theme uppercase mt-1">Deteksi Intrusi Jaringan, DDoS, & Malware.</p>
+                                </div>
+                            </div>
+                            <!-- Finance -->
+                            <div class="p-6 bg-accent-theme rounded-3xl border border-main hover:bg-bg-card-hover transition-all flex items-center gap-6">
+                                <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-2xl text-emerald-600 dark:text-emerald-400">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-primary-theme font-bold text-sm uppercase tracking-widest">Finance/Logistik</h5>
+                                    <p class="text-[10px] text-muted-theme uppercase mt-1">Penipuan Kartu Kredit & Anomali Supply Chain.</p>
+                                </div>
+                            </div>
+                            <!-- IT Systems -->
+                            <div class="p-6 bg-accent-theme rounded-3xl border border-main hover:bg-bg-card-hover transition-all flex items-center gap-6">
+                                <div class="w-14 h-14 bg-indigo-500/10 rounded-2xl flex items-center justify-center text-2xl text-indigo-600 dark:text-indigo-400">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-primary-theme font-bold text-sm uppercase tracking-widest">Sistem TI</h5>
+                                    <p class="text-[10px] text-muted-theme uppercase mt-1">Monitoring Metrik Server & Hardware Failure.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Closing Quote -->
+                <div class="mt-16 text-center border-t border-main pt-8">
+                    <p class="text-sm italic text-muted-theme font-serif">
+                        "Dalam dunia data, tidak semua hal berfokus pada yang normal. Kadang, nilai paling berharga justru tersembunyi pada anomali yang berhasil kita isolasi."
+                    </p>
+                </div>
+            </div>
+
+            <!-- 1.5: Riset Internasional (Russia & Serbia) -->
+            <div class="tech-card p-10 border-l-4 border-l-rose-600 bg-accent-theme">
+                <h3 class="text-xl font-bold text-primary-theme mb-6 uppercase tracking-widest flex items-center gap-3">
+                    <i class="fas fa-globe-europe text-rose-500"></i> Perspektif Riset Rusia & Serbia
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs text-body-theme leading-relaxed">
+                    <div class="p-6 bg-bg-main rounded-2xl border border-main">
+                        <h4 class="text-rose-600 dark:text-rose-400 font-bold mb-2 uppercase tracking-widest">🇷🇺 Riset Rusia</h4>
+                        <p>Fokus pada optimasi iForest untuk <b>Remote Sensing</b> dan data satelit yang memiliki tingkat <i>noise</i> tinggi namun membutuhkan presisi matematis ekstrem.</p>
+                    </div>
+                    <div class="p-6 bg-bg-main rounded-2xl border border-main">
+                        <h4 class="text-rose-600 dark:text-rose-400 font-bold mb-2 uppercase tracking-widest">🇷🇸 Riset Serbia</h4>
+                        <p>Fokus pada <b>Big Data Stream</b>, mengembangkan varian iForest yang adaptif dan mampu belajar secara real-time dari aliran data yang tidak terputus.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SIMULASI (THE PRACTICE) -->
+        <section id="simulasi" class="tab-content animate-step">
+            <div class="tech-card p-12 relative overflow-hidden">
+                <div class="absolute top-6 right-8 text-[10rem] text-primary-theme opacity-5 font-black pointer-events-none uppercase">SIMULATE</div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 relative z-10">
+                    <div class="lg:col-span-2">
+                        <h2 class="text-3xl font-bold text-primary-theme mb-4 uppercase tracking-tighter">Interaktif Visualizer</h2>
+                        <div class="bg-accent-theme p-4 rounded-[2rem] border border-main mb-8">
+                            <canvas id="isoCanvas"></canvas>
+                        </div>
+                        <div class="flex flex-wrap gap-4">
+                            <button id="btn-run" onclick="startSimulation()" class="flex-1 md:flex-none bg-sky-500 text-white px-10 py-4 rounded-2xl font-bold shadow-lg hover:shadow-sky-400/30 transition-all flex items-center justify-center gap-3 active:scale-95">
+                                <i class="fas fa-play"></i> EXECUTE SIMULATION
+                            </button>
+                            <button onclick="resetSimulation()" class="flex-1 md:flex-none bg-accent-theme text-body-theme px-10 py-4 rounded-2xl font-bold hover:bg-bg-card-hover transition-all border border-main active:scale-95 flex items-center justify-center gap-3">
+                                <i class="fas fa-sync-alt"></i> RESET
+                            </button>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="p-8 bg-rose-500/10 rounded-3xl border border-rose-500/20">
+                            <h4 class="text-rose-600 dark:text-rose-400 font-bold mb-2 uppercase text-[10px] tracking-widest">Anomaly Steps (h)</h4>
+                            <div class="text-7xl font-black text-rose-500" id="stat-anomaly">0</div>
+                        </div>
+                        <div class="p-8 bg-sky-500/10 rounded-3xl border border-sky-500/20">
+                            <h4 class="text-sky-600 dark:text-sky-400 font-bold mb-2 uppercase text-[10px] tracking-widest">Normal Steps (h)</h4>
+                            <div class="text-7xl font-black text-sky-500" id="stat-normal">0</div>
+                        </div>
+                        <div id="sim-conclusion" class="hidden p-6 bg-emerald-500/10 rounded-3xl border border-emerald-500/20">
+                            <p class="text-emerald-600 dark:text-emerald-400 text-xs font-bold leading-relaxed uppercase tracking-tighter">
+                                <i class="fas fa-check-circle mr-2"></i> Anomaly isolated in <span id="txt-anomali-step" class="underline"></span> vs Normal in <span id="txt-normal-step" class="underline"></span>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Bedah Logika & Analisis Hasil -->
+                <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="tech-card p-10 bg-accent-theme/30">
+                        <h3 class="text-xl font-bold text-primary-theme mb-8 flex items-center gap-3 uppercase tracking-widest">
+                            <i class="fas fa-microchip text-sky-500"></i> Bedah Logika Simulasi
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-[11px] text-body-theme leading-relaxed">
+                            <div class="space-y-4">
+                                <p><strong class="text-sky-600 dark:text-sky-400">1. Unbiased Splitting:</strong> Garis putus-putus mewakili pemilihan fitur dan nilai potong secara acak, memastikan sistem tidak bias terhadap satu atribut saja.</p>
+                                <p><strong class="text-sky-600 dark:text-sky-400">2. Path Depth (h):</strong> Jumlah partisi adalah kedalaman jalur. Anomali selalu berakhir dengan kedalaman rendah karena posisinya yang eksentrik.</p>
+                            </div>
+                            <div class="space-y-4">
+                                <p><strong class="text-sky-600 dark:text-sky-400">3. Spatial Isolation:</strong> Semakin jarang sebuah wilayah, semakin cepat partisi acak akan mengurung satu titik. Inilah inti dari kecerdasan spasi Isolation Forest.</p>
+                                <p><strong class="text-sky-600 dark:text-sky-400">4. Ensemble Averaging:</strong> Simulasi ini mewakili satu pohon. Bayangkan jika kita melakukan ini 100 kali dan merata-ratakannya; itulah kekuatan Forest yang sesungguhnya.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analisis Hasil Komprehensif -->
+                    <div class="tech-card p-10 bg-indigo-500/5 relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 text-9xl text-indigo-500/5 font-black uppercase">DATA</div>
+                        <h3 class="text-xl font-bold text-primary-theme mb-8 flex items-center gap-3 uppercase tracking-widest">
+                            <i class="fas fa-chart-line text-indigo-500"></i> Analisis Hasil & Interpretasi
+                        </h3>
+                        <div class="space-y-6 text-xs text-body-theme leading-relaxed">
+                            <div>
+                                <h4 class="text-indigo-600 dark:text-indigo-400 font-bold mb-2 uppercase tracking-tighter">1. Interpretasi Kedalaman Jalur (Path Length)</h4>
+                                <p>Dalam simulasi ini, kita melihat kontras yang nyata. Titik merah (Anomali) biasanya terisolasi dalam <b>2-4 langkah</b>, sementara titik biru (Normal) membutuhkan <b>10-15 langkah</b>. Secara teoretis, anomali memiliki jalur yang <i>lebih pendek</i> karena mereka tidak memiliki "pelindung" spasi di sekitarnya.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-indigo-600 dark:text-indigo-400 font-bold mb-2 uppercase tracking-tighter">2. Rasio Isolasi: Kenapa Ini Penting?</h4>
+                                <p>Semakin besar perbedaan antara kedalaman anomali dan data normal, semakin tinggi kualitas deteksi sistem kita. Dalam industri, rasio ini menentukan seberapa sensitif algoritma dalam memisahkan sinyal penting dari <i>noise</i> data.</p>
+                            </div>
+                            <div class="p-4 bg-accent-theme rounded-2xl border border-main italic">
+                                <strong class="text-primary-theme block mb-1 uppercase text-[10px]">Case Study: Fraud Detection</strong>
+                                "Bayangkan titik merah adalah transaksi kartu kredit ilegal di luar negeri. Karena pola lokasinya yang sangat berbeda dari perilaku harianmu (titik biru), Isolation Forest dapat 'menangkap' transaksi tersebut seketika hanya dalam hitungan milidetik."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: KESIMPULAN (THE WISDOM) -->
+        <section id="kesimpulan" class="tab-content animate-step">
+            <div class="tech-card p-16 bg-gradient-to-br from-bg-card to-indigo-500/10 relative overflow-hidden mb-16">
+                <div class="relative z-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+                        <div class="space-y-6">
+                            <span class="text-sky-600 dark:text-sky-400 font-mono text-sm mb-4 block tracking-[0.4em]">FINAL_REPORT</span>
+                            <h2 class="text-5xl font-black text-primary-theme leading-tight uppercase">Wisdom in <br>Anomalies</h2>
+                            <p class="text-body-theme text-lg leading-relaxed">
+                                Kita telah menelusuri materi dari kulit, daging, hingga sumsum tulangnya. Isolation Forest adalah bukti bahwa keunikan adalah kunci untuk memahami kebenaran dalam data raksasa.
+                            </p>
+                        </div>
+                        <div class="p-4 bg-accent-theme rounded-[3rem] border border-main shadow-2xl">
+                            <img src="assets/final_summary.svg" alt="Final" class="w-full h-auto rounded-[2.5rem]">
+                        </div>
+                    </div>
+
+                    <!-- References & Further Reading -->
+                    <div class="border-t border-main pt-12">
+                        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-10 gap-6">
+                            <h3 class="text-2xl font-bold text-primary-theme uppercase tracking-widest flex items-center gap-3">
+                                <i class="fas fa-book-open text-sky-500"></i> Daftar Pustaka & Bacaan Lanjutan
+                            </h3>
+                            <span class="px-4 py-1 bg-sky-500/10 border border-sky-500/20 rounded-full text-[10px] text-sky-600 dark:text-sky-400 font-mono animate-pulse">RECOMMENDED_READING_LIST</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <!-- Literatur Fundamental -->
+                            <div class="space-y-6">
+                                <h4 class="text-xs font-bold text-muted-theme uppercase tracking-widest border-l-2 border-sky-500 pl-3">Literatur Fundamental (Pohon Utama)</h4>
+                                <div class="space-y-4">
+                                    <div class="p-5 bg-accent-theme rounded-2xl border border-main hover:border-sky-500/30 transition-all group">
+                                        <p class="text-body-theme text-xs italic mb-2 group-hover:text-sky-500 transition-colors">"Liu, F. T., Ting, K. M., & Zhou, Z. H. (2008). Isolation Forest. In ICDM IEEE."</p>
+                                        <p class="text-[10px] text-muted-theme leading-relaxed uppercase tracking-tighter">Ini adalah paper original yang memperkenalkan algoritma ini ke dunia. Sangat wajib dibaca untuk memahami asal-usul logika isolasi.</p>
+                                    </div>
+                                    <div class="p-5 bg-accent-theme rounded-2xl border border-main hover:border-sky-500/30 transition-all group">
+                                        <p class="text-body-theme text-xs italic mb-2 group-hover:text-sky-500 transition-colors">"Liu, F. T., Ting, K. M., & Zhou, Z. H. (2012). Isolation-based Anomaly Detection. ACM TKDD."</p>
+                                        <p class="text-[10px] text-muted-theme leading-relaxed uppercase tracking-tighter">Versi ekspansi yang membahas optimasi sub-sampling untuk dataset berskala besar dan dimensi tinggi.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Artikel Praktis & Riset Internasional -->
+                            <div class="space-y-6">
+                                <h4 class="text-xs font-bold text-muted-theme uppercase tracking-widest border-l-2 border-rose-500 pl-3">Artikel Praktis & Riset Internasional</h4>
+                                <div class="space-y-4">
+                                    <div class="p-5 bg-accent-theme rounded-2xl border border-main hover:border-rose-500/30 transition-all group">
+                                        <p class="text-body-theme text-xs italic mb-2 group-hover:text-rose-500 transition-colors">"Scikit-learn Documentation: Anomaly Detection using Isolation Forest."</p>
+                                        <p class="text-[10px] text-muted-theme leading-relaxed uppercase tracking-tighter">Panduan teknis dan implementasi kode Python untuk para praktisi data science yang ingin mencoba secara langsung.</p>
+                                    </div>
+                                    <div class="p-5 bg-accent-theme rounded-2xl border border-main hover:border-rose-500/30 transition-all group">
+                                        <p class="text-body-theme text-xs italic mb-2 group-hover:text-rose-500 transition-colors">"V. V. Myasnikov. (2020). Computer Optics. Samara National Research University (Russia)."</p>
+                                        <p class="text-[10px] text-muted-theme leading-relaxed uppercase tracking-tighter">Riset mendalam dari Rusia tentang penerapan iForest pada citra satelit dan data geospasial.</p>
+                                    </div>
+                                    <div class="p-5 bg-accent-theme rounded-2xl border border-main hover:border-rose-500/30 transition-all group">
+                                        <p class="text-body-theme text-xs italic mb-2 group-hover:text-rose-500 transition-colors">"ComSIS Journal (Serbia). (2018). Machine Learning for Big Data Streams."</p>
+                                        <p class="text-[10px] text-muted-theme leading-relaxed uppercase tracking-tighter">Pembahasan tentang variasi algoritma isolasi yang dioptimalkan untuk aliran data real-time skala besar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA for Students -->
+                        <div class="mt-12 p-6 bg-gradient-to-r from-sky-500/10 to-indigo-500/10 rounded-3xl border border-main text-center">
+                            <p class="text-xs text-muted-theme italic">
+                                <i class="fas fa-lightbulb text-sky-500 mr-2"></i> "Ilmu pengetahuan adalah senjata yang paling mematikan. Gunakan referensi di atas untuk memperdalam cakrawala berpikirmu, muridku sayang."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Cyber Footer -->
+    <footer class="py-16 border-t border-main bg-bg-glass">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="font-bold text-primary-theme tracking-widest uppercase text-sm mb-2">AI CORE SYSTEMS V.2.0</p>
+            <p class="text-[10px] text-muted-theme font-mono tracking-tighter uppercase">Developed by Prof. Blonde | &copy; 2026 Academic Research</p>
+        </div>
+    </footer>
+
+    <!-- Image Viewer Modal (Cyber Lightbox) -->
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-xl flex items-center justify-center p-6 cursor-zoom-out" onclick="closeModal()">
+        <button class="absolute top-8 right-8 text-white/50 hover:text-white text-4xl transition-all" onclick="closeModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="relative max-w-5xl w-full flex flex-col items-center gap-6" onclick="event.stopPropagation()">
+            <img id="modalImg" src="" alt="Zoomed Image" class="w-full h-auto rounded-3xl shadow-[0_0_50px_rgba(56,189,248,0.2)] border border-white/10 animate-zoom-in">
+            <p id="modalCaption" class="text-sky-400 font-mono text-xs uppercase tracking-widest text-center"></p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/simulation.js"></script>
+</body>
+</html>

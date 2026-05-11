@@ -1,0 +1,63 @@
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38bdf8" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="400" fill="url(#grad1)" rx="20"/>
+  
+  <!-- KDD Pipeline -->
+  <g transform="translate(40, 220)">
+    <!-- Data Source -->
+    <rect x="0" y="-40" width="100" height="80" rx="10" fill="#334155" stroke="#475569" stroke-width="2"/>
+    <text x="50" y="5" font-family="Arial" font-size="12" fill="#94a3b8" text-anchor="middle">RAW DATA</text>
+    
+    <!-- Arrow 1 -->
+    <path d="M105 0 L145 0" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- Preprocessing -->
+    <rect x="150" y="-40" width="100" height="80" rx="10" fill="#334155" stroke="#475569" stroke-width="2"/>
+    <text x="200" y="5" font-family="Arial" font-size="12" fill="#94a3b8" text-anchor="middle">PRE-PROCESS</text>
+
+    <!-- Arrow 2 -->
+    <path d="M255 0 L295 0" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+    <!-- Data Mining (The Core) -->
+    <rect x="300" y="-60" width="160" height="120" rx="20" fill="#0ea5e9" fill-opacity="0.2" stroke="#0ea5e9" stroke-width="3" filter="url(#glow)">
+      <animate attributeName="stroke-opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
+    </rect>
+    <text x="380" y="-10" font-family="Arial" font-weight="bold" font-size="14" fill="#38bdf8" text-anchor="middle">DATA MINING</text>
+    <text x="380" y="20" font-family="Arial" font-size="10" fill="#e2e8f0" text-anchor="middle">(Isolation Forest)</text>
+
+    <!-- Arrow 3 -->
+    <path d="M465 0 L505 0" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+    <!-- Interpretation -->
+    <rect x="510" y="-40" width="110" height="80" rx="10" fill="#334155" stroke="#475569" stroke-width="2"/>
+    <text x="565" y="5" font-family="Arial" font-size="12" fill="#94a3b8" text-anchor="middle">INTERPRETATION</text>
+
+    <!-- Arrow 4 -->
+    <path d="M625 0 L665 0" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+    <!-- Knowledge -->
+    <path d="M670 -50 L780 -50 L810 0 L780 50 L670 50 Z" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="2" filter="url(#glow)"/>
+    <text x="735" y="5" font-family="Arial" font-weight="bold" font-size="14" fill="#34d399" text-anchor="middle">KNOWLEDGE</text>
+  </g>
+
+  <!-- Title -->
+  <text x="450" y="50" font-family="Arial" font-weight="bold" font-size="24" fill="#e2e8f0" text-anchor="middle">KDD PROCESS PIPELINE</text>
+  <text x="450" y="85" font-family="Arial" font-size="16" fill="#64748b" text-anchor="middle">Knowledge Discovery in Databases</text>
+</svg>

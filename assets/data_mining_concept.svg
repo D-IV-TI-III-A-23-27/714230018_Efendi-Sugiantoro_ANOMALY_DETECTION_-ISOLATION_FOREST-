@@ -1,0 +1,68 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#818cf8;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Glow -->
+  <circle cx="400" cy="300" r="200" fill="url(#grad1)" opacity="0.05" />
+
+  <!-- Data Streams (Lines) -->
+  <g stroke="#ffffff" stroke-width="1" opacity="0.2">
+    <path d="M200 500 Q 250 400 400 300" fill="none">
+      <animate attributeName="stroke-dasharray" from="0,1000" to="1000,0" dur="3s" repeatCount="indefinite" />
+    </path>
+    <path d="M600 500 Q 550 400 400 300" fill="none">
+      <animate attributeName="stroke-dasharray" from="0,1000" to="1000,0" dur="3.5s" repeatCount="indefinite" />
+    </path>
+    <path d="M400 550 V 300" fill="none">
+      <animate attributeName="stroke-dasharray" from="0,1000" to="1000,0" dur="2.5s" repeatCount="indefinite" />
+    </path>
+  </g>
+
+  <!-- Raw Data Layer (Bottom) -->
+  <g transform="translate(350, 480)">
+    <rect width="100" height="60" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
+    <path d="M20 20 H80 M20 30 H80 M20 40 H50" stroke="#38bdf8" stroke-width="2" />
+    <text x="50" y="75" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="10">RAW_DATASET</text>
+  </g>
+
+  <!-- Processing Filter (Middle) -->
+  <g transform="translate(300, 250)">
+    <ellipse cx="100" cy="50" rx="150" ry="40" fill="none" stroke="url(#grad1)" stroke-width="2" stroke-dasharray="10,5">
+      <animateTransform attributeName="transform" type="rotate" from="0 100 50" to="360 100 50" dur="10s" repeatCount="indefinite" />
+    </ellipse>
+    <text x="100" y="55" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="12" font-weight="bold" filter="glow">PATTERN_EXTRACTION</text>
+  </g>
+
+  <!-- Knowledge Gems (Top) -->
+  <g transform="translate(370, 80)" filter="glow">
+    <!-- Diamond Shape -->
+    <path d="M30 0 L60 30 L30 60 L0 30 Z" fill="url(#grad1)" opacity="0.8">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-10; 0,0" dur="2s" repeatCount="indefinite" />
+    </path>
+    <text x="30" y="80" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="14" font-weight="bold uppercase">KNOWLEDGE</text>
+  </g>
+
+  <!-- Particles -->
+  <circle cx="300" cy="150" r="3" fill="#38bdf8">
+    <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="500" cy="200" r="2" fill="#818cf8">
+    <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="450" cy="100" r="4" fill="#ffffff">
+    <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" />
+  </circle>
+
+</svg>

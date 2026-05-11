@@ -1,0 +1,66 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="anomalyGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#f43f5e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9f1239;stop-opacity:1" />
+    </radialGradient>
+    <filter id="redGlow">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Radar Lines -->
+  <g stroke="#ffffff" stroke-width="0.5" opacity="0.1">
+    <circle cx="400" cy="300" r="100" fill="none" />
+    <circle cx="400" cy="300" r="200" fill="none" />
+    <circle cx="400" cy="300" r="300" fill="none" />
+    <line x1="100" y1="300" x2="700" y2="300" />
+    <line x1="400" y1="0" x2="400" y2="600" />
+  </g>
+
+  <!-- Normal Data Cluster -->
+  <g fill="#38bdf8" opacity="0.4">
+    <circle cx="380" cy="280" r="6" />
+    <circle cx="410" cy="310" r="5" />
+    <circle cx="390" cy="320" r="7" />
+    <circle cx="420" cy="290" r="6" />
+    <circle cx="400" cy="305" r="5" />
+    <circle cx="370" cy="310" r="6" />
+    <circle cx="430" cy="320" r="5" />
+    <circle cx="385" cy="340" r="6" />
+    <circle cx="415" cy="270" r="7" />
+  </g>
+
+  <!-- Radar Scanner (Animated) -->
+  <g transform="translate(400,300)">
+    <line x1="0" y1="0" x2="300" y2="0" stroke="#38bdf8" stroke-width="2" opacity="0.5">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite" />
+    </line>
+    <path d="M0 0 L250 0 A 250 250 0 0 1 200 150 Z" fill="#38bdf8" opacity="0.1">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite" />
+    </path>
+  </g>
+
+  <!-- The Anomaly (Outlier) -->
+  <g transform="translate(600, 150)">
+    <!-- Target Box -->
+    <rect x="-30" y="-30" width="60" height="60" fill="none" stroke="#f43f5e" stroke-width="1" stroke-dasharray="10,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="30" dur="1s" repeatCount="indefinite" />
+    </rect>
+    <!-- Anomaly Point -->
+    <circle cx="0" cy="0" r="12" fill="url(#anomalyGrad)" filter="redGlow">
+      <animate attributeName="r" values="10;14;10" dur="1s" repeatCount="indefinite" />
+    </circle>
+    <!-- Labels -->
+    <text x="20" y="40" fill="#f43f5e" font-family="monospace" font-size="12" font-weight="bold">ANOMALY_DETECTED</text>
+    <text x="20" y="55" fill="#f43f5e" font-family="monospace" font-size="10">PATH_LENGTH: SHORT</text>
+  </g>
+
+  <!-- Decoration -->
+  <text x="400" y="580" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="12 uppercase" tracking="4">Scanning for irregularities...</text>
+
+</svg>
