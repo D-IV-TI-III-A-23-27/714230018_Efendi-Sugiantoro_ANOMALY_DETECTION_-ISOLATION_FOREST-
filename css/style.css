@@ -263,4 +263,20 @@ body::before {
     animation: liquid-flow 8s linear infinite;
 }
 
+/* Mobile Tidy Utilities */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+@media (max-width: 768px) {
+    .tab-btn {
+        min-width: 90px;
+        flex-shrink: 0;
+    }
+}
+
 
