@@ -1,6 +1,7 @@
 // --- ANIMATION CANVAS LOGIC ---
 let canvas, ctx, points = [], anomalyPoint = null, normalPoint = null, isRunning = false;
 let logicalW, logicalH;
+let currentSimLevel = 1;
 
 // Theme Colors
 const getThemeColor = (varName) => getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
@@ -28,6 +29,33 @@ function resizeCanvas() {
     if (ctx) ctx.scale(dpr, dpr);
 }
 
+window.setSimLevel = function(lvl) {
+    if (isRunning) return;
+    currentSimLevel = lvl;
+    
+    // Update UI buttons
+    document.querySelectorAll('.lvl-btn').forEach(btn => {
+        btn.classList.remove('bg-sky-500', 'text-white', 'shadow-lg', 'shadow-sky-500/20');
+        btn.classList.add('text-muted-theme', 'hover:text-sky-500');
+    });
+    const activeBtn = document.getElementById('lvl-' + lvl);
+    if (activeBtn) {
+        activeBtn.classList.add('bg-sky-500', 'text-white', 'shadow-lg', 'shadow-sky-500/20');
+        activeBtn.classList.remove('text-muted-theme', 'hover:text-sky-500');
+    }
+    
+    window.initCanvas();
+};
+
+function generateCluster(count, centerX, centerY, sigma) {
+    for(let i=0; i<count; i++) {
+        let u = Math.random(), v = Math.random();
+        let numX = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+        let numY = Math.sqrt(-2.0 * Math.log(u)) * Math.sin(2.0 * Math.PI * v);
+        points.push({ x: centerX + numX * sigma, y: centerY + numY * sigma, type: 'normal' });
+    }
+}
+
 window.initCanvas = function() {
     initElements();
     if (!canvas) return;
@@ -43,19 +71,29 @@ window.initCanvas = function() {
         btnRun.classList.remove('opacity-50');
     }
 
-    const centerX = logicalW / 2 + 50;
-    const centerY = logicalH / 2;
-
-    // Generate Normal Cluster
-    for(let i=0; i<120; i++) {
-        let u = Math.random(), v = Math.random();
-        let numX = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
-        let numY = Math.sqrt(-2.0 * Math.log(u)) * Math.sin(2.0 * Math.PI * v);
-        points.push({ x: centerX + numX * 35, y: centerY + numY * 35, type: 'normal' });
+    // Level-based Data Generation
+    if (currentSimLevel === 1) {
+        // BASIC: Satu Cluster Sentral
+        generateCluster(120, logicalW/2 + 50, logicalH/2, 35);
+        anomalyPoint = { x: logicalW * 0.15, y: logicalH * 0.25, type: 'anomaly' };
+    } else if (currentSimLevel === 2) {
+        // COMPLEX: Dua Cluster Terpisah (Sesuai Gambar User)
+        generateCluster(80, logicalW * 0.25, logicalH * 0.7, 30);
+        generateCluster(80, logicalW * 0.75, logicalH * 0.3, 30);
+        anomalyPoint = { x: logicalW * 0.5, y: logicalH * 0.5, type: 'anomaly' };
+    } else {
+        // EXTREME: Tiga Cluster + Noise (Masking Scenario)
+        generateCluster(60, logicalW * 0.2, logicalH * 0.2, 25);
+        generateCluster(60, logicalW * 0.8, logicalH * 0.8, 25);
+        generateCluster(60, logicalW * 0.5, logicalH * 0.5, 40);
+        // Add uniform noise
+        for(let i=0; i<40; i++) {
+            points.push({ x: Math.random() * logicalW, y: Math.random() * logicalH, type: 'normal' });
+        }
+        anomalyPoint = { x: logicalW * 0.1, y: logicalH * 0.9, type: 'anomaly' };
     }
 
     normalPoint = points[0];
-    anomalyPoint = { x: logicalW * 0.15, y: logicalH * 0.25, type: 'anomaly' };
     points.push(anomalyPoint);
 
     drawPoints();

@@ -203,4 +203,64 @@ body::before {
 .text-muted-theme { color: var(--text-muted); }
 .bg-accent-theme { background-color: var(--bg-accent); }
 
+/* Architecture Flow Animations */
+@keyframes flow-dot {
+    0% { transform: translateX(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(500%); opacity: 0; }
+}
+
+.animate-flow-dot {
+    animation: flow-dot 3s linear infinite;
+}
+
+@keyframes pulse-subtle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+.animate-pulse-subtle {
+    animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+@keyframes float-tech {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-float-tech {
+    animation: float-tech 4s ease-in-out infinite;
+}
+
+.flow-line {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.flow-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 100%;
+    background: white;
+    box-shadow: 0 0 10px white;
+    animation: flow-dot 2s linear infinite;
+}
+
+/* Liquid Flow SVG Animation (The Neon Stream) */
+@keyframes liquid-flow {
+    0% { stroke-dashoffset: 400; }
+    100% { stroke-dashoffset: 0; }
+}
+
+.animate-liquid-flow {
+    stroke-dasharray: 40 80; /* Spacing of the pulses */
+    animation: liquid-flow 8s linear infinite;
+}
+
 

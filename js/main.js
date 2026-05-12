@@ -144,3 +144,117 @@ function drag(e) {
 function setTranslate(xPos, yPos, el) {
     el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
 }
+
+// Architecture SVG Interactivity
+function showNodeInfo(type) {
+    const card = document.getElementById('nodeInfoCard');
+    const title = document.getElementById('infoTitle');
+    const text = document.getElementById('infoText');
+    const icon = document.getElementById('infoIcon');
+
+    const data = {
+        source: {
+            title: "Data Streaming",
+            icon: '<i class="fas fa-database"></i>',
+            text: "Input data mentah yang akan dianalisis. Dataset bisa berupa log server, transaksi keuangan, atau metrik sensor secara real-time."
+        },
+        sampling: {
+            title: "Sub-Sampling",
+            icon: '<i class="fas fa-filter"></i>',
+            text: "Proses pengambilan sampel acak (biasanya n=256) untuk membangun iTree. Berguna untuk menghindari masalah 'swamping' dan 'masking'."
+        },
+        forest: {
+            title: "Isolation Forest",
+            icon: '<i class="fas fa-tree"></i>',
+            text: "Kumpulan ratusan pohon isolasi (iTrees) yang dibangun secara independen. Di sinilah proses partisi rekursif terjadi secara paralel."
+        },
+        scoring: {
+            title: "Anomaly Scoring",
+            icon: '<i class="fas fa-tachometer-alt"></i>',
+            text: "Tahap akhir di mana rata-rata panjang jalur dikonversi menjadi skor (0-1). Skor di atas 0.6 biasanya dianggap sebagai anomali kuat."
+        }
+    };
+
+    if (data[type]) {
+        title.innerText = data[type].title;
+        text.innerText = data[type].text;
+        icon.innerHTML = data[type].icon;
+        card.classList.remove('hidden');
+    }
+}
+
+function hideNodeInfo() {
+    document.getElementById('nodeInfoCard').classList.add('hidden');
+}
+
+// Complex Architecture Detail Logic
+function showArchDetail(type) {
+    const card = document.getElementById('archDetailCard');
+    const title = document.getElementById('archDetailTitle');
+    const text = document.getElementById('archDetailText');
+    const icon = document.getElementById('archDetailIcon');
+
+    const data = {
+        dataset: {
+            title: "Offline Dataset",
+            icon: '<i class="fas fa-database"></i>',
+            text: "Kumpulan data historis besar yang digunakan untuk melatih model. Data ini harus bersih dan mewakili perilaku sistem dalam kondisi normal."
+        },
+        engineering: {
+            title: "Feature Eng.",
+            icon: '<i class="fas fa-tools"></i>',
+            text: "Tahap transformasi data mentah menjadi fitur numerik yang bisa dipahami algoritma iForest, seperti normalisasi dan seleksi variabel."
+        },
+        artifact: {
+            title: "Model Artifact",
+            icon: '<i class="fas fa-cube"></i>',
+            text: "File biner hasil training yang berisi struktur iForest (kumpulan pohon isolasi) yang sudah siap digunakan untuk deteksi."
+        },
+        forest: {
+            title: "iForest Engine",
+            icon: '<i class="fas fa-microchip"></i>',
+            text: "Inti dari arsitektur di mana algoritma Isolation Forest membangun ratusan iTrees. Setiap pohon mengisolasi titik data melalui partisi acak."
+        },
+        registry: {
+            title: "Model Registry",
+            icon: '<i class="fas fa-cloud-upload-alt"></i>',
+            text: "Repositori pusat untuk menyimpan versi model. Memungkinkan layanan online untuk mendownload model terbaru secara otomatis."
+        },
+        live: {
+            title: "Live Stream",
+            icon: '<i class="fas fa-broadcast-tower"></i>',
+            text: "Aliran data real-time dari sistem produksi. Setiap titik data akan langsung dikirim ke layanan inferensi untuk diperiksa."
+        },
+        alert: {
+            title: "Alert System",
+            icon: '<i class="fas fa-exclamation-triangle"></i>',
+            text: "Jika skor anomali melampaui ambang batas (misal > 0.6), sistem akan memicu peringatan dan tindakan mitigasi otomatis."
+        },
+        preprocess: {
+            title: "Live Preproc.",
+            icon: '<i class="fas fa-microchip"></i>',
+            text: "Transformasi data real-time yang harus berjalan sangat cepat (latensi rendah) agar sesuai dengan format yang dibutuhkan model."
+        },
+        inference: {
+            title: "Inference Svc.",
+            icon: '<i class="fas fa-brain"></i>',
+            text: "Mesin utama yang menghitung skor isolasi untuk data baru menggunakan model yang sudah dilatih sebelumnya."
+        },
+        score: {
+            title: "Decision Logic",
+            icon: '<i class="fas fa-calculator"></i>',
+            text: "Logika penentuan apakah sebuah data normal atau anomali berdasarkan ambang batas statistik yang ditentukan."
+        }
+    };
+
+    if (data[type]) {
+        title.innerText = data[type].title;
+        text.innerText = data[type].text;
+        icon.innerHTML = data[type].icon;
+        card.classList.remove('hidden');
+    }
+}
+
+function hideArchDetail() {
+    document.getElementById('archDetailCard').classList.add('hidden');
+}
