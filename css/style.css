@@ -1,28 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
 
 :root {
-    /* Semantic Variables - Light Theme */
-    --bg-main: #f8fafc;
+    /* Unified Cyber-AI Design System - Light Mode */
+    --bg-main: #f1f5f9;
     --bg-card: rgba(255, 255, 255, 0.7);
     --bg-card-hover: rgba(255, 255, 255, 0.9);
-    --bg-glass: rgba(248, 250, 252, 0.85);
-    --bg-accent: #f1f5f9;
+    --bg-glass: rgba(241, 245, 249, 0.85);
+    --bg-accent: #e2e8f0;
     
     --text-title: #0f172a;
     --text-body: #334155;
     --text-muted: #64748b;
     
-    --border-main: rgba(15, 23, 42, 0.1);
+    --border-main: rgba(15, 23, 42, 0.08);
     --border-accent: rgba(14, 165, 233, 0.2);
     
     --accent: #0ea5e9;
-    --accent-glow: rgba(14, 165, 233, 0.2);
+    --accent-glow: rgba(14, 165, 233, 0.1);
     --accent-red: #e11d48;
     --accent-green: #059669;
     --accent-indigo: #4f46e5;
     
-    --canvas-bg: #ffffff;
-    --grid-color: rgba(15, 23, 42, 0.05);
+    --canvas-bg: #f8fafc;
+    --grid-color: rgba(15, 23, 42, 0.03);
 }
 
 .dark {
@@ -278,5 +278,18 @@ body::before {
         flex-shrink: 0;
     }
 }
+
+/* SVG Theme Support - Unified & High Contrast */
+.svg-text-main { fill: #0f172a; transition: fill 0.3s ease; font-weight: 700; }
+.svg-text-label { fill: #000000; transition: fill 0.3s ease; font-weight: 800; }
+.svg-node-text { fill: #f8fafc !important; font-weight: 600; } /* Always white for dark nodes */
+.svg-box-bg { fill: rgba(15, 23, 42, 0.05); stroke: rgba(15, 23, 42, 0.2); transition: all 0.3s ease; }
+.svg-flow-line { stroke: #334155; stroke-width: 1.5; transition: stroke 0.3s ease; }
+
+.dark .svg-text-main { fill: #f8fafc; font-weight: normal; }
+.dark .svg-text-label { fill: #94a3b8; font-weight: normal; }
+.dark .svg-node-text { fill: #f8fafc !important; }
+.dark .svg-box-bg { fill: rgba(30, 41, 59, 0.3); stroke: rgba(255, 255, 255, 0.1); }
+.dark .svg-flow-line { stroke: #f8fafc; stroke-width: 1; }
 
 

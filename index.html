@@ -10,6 +10,24 @@
     
     <!-- External Resources -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-card': 'var(--bg-card)',
+                        'bg-accent': 'var(--bg-accent)',
+                        'accent-theme': 'var(--bg-accent)',
+                        'primary-theme': 'var(--text-title)',
+                        'body-theme': 'var(--text-body)',
+                        'muted-theme': 'var(--text-muted)',
+                        'border-main': 'var(--border-main)',
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/theme.js"></script>
@@ -215,7 +233,7 @@
                                 </div>
                             </div>
 
-                            <div class="relative overflow-hidden bg-black/40 rounded-[3rem] border border-white/5 p-4">
+                            <div class="relative overflow-hidden bg-accent-theme/40 dark:bg-black/40 rounded-[3rem] border border-main p-4">
                                 <!-- Inlined SVG for Interactivity -->
                                 <div id="complex-arch-container">
                                     <!-- The SVG I just created in assets will be inlined here -->
@@ -224,8 +242,8 @@
                                         <rect width="1000" height="600" rx="20" fill="rgba(15, 23, 42, 0)" />
                                         
                                         <!-- OFFLINE MODEL TRAINING BOX -->
-                                        <rect x="20" y="70" width="780" height="240" rx="15" fill="rgba(30, 41, 59, 0.3)" stroke="rgba(255, 255, 255, 0.1)" stroke-dasharray="5,5" />
-                                        <text x="40" y="95" font-family="Inter" font-size="14" font-weight="bold" fill="#94a3b8">OFFLINE MODEL TRAINING</text>
+                                        <rect x="20" y="70" width="780" height="240" rx="15" class="svg-box-bg" stroke-dasharray="5,5" />
+                                        <text x="40" y="95" font-family="Inter" font-size="14" font-weight="bold" class="svg-text-label">OFFLINE MODEL TRAINING</text>
 
                                         <!-- DATA FLOW PACKETS (NEW ANIMATED ELEMENTS) -->
                                         <!-- Training Flow -->
@@ -235,7 +253,7 @@
                                         <circle r="3" fill="#6366f1" filter="url(#glow)">
                                             <animateMotion dur="4s" repeatCount="indefinite" path="M 290 200 L 330 200" />
                                         </circle>
-                                        <circle r="3" fill="#f8fafc" filter="url(#glow)">
+                                        <circle r="3" fill="#6366f1" filter="url(#glow)">
                                             <animateMotion dur="5s" repeatCount="indefinite" path="M 630 200 L 680 200" />
                                         </circle>
 
@@ -267,7 +285,7 @@
                                         <g class="node-arch" onclick="showArchDetail('dataset')">
                                             <rect x="50" y="150" width="80" height="100" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
                                             <text x="90" y="195" font-family="FontAwesome" font-size="30" text-anchor="middle" fill="#38bdf8">&#xf1c0;</text>
-                                            <text x="90" y="225" font-family="Inter" font-size="10" text-anchor="middle" fill="#f8fafc" font-weight="bold">RAW DATASET</text>
+                                            <text x="90" y="225" font-family="Inter" font-size="10" text-anchor="middle" class="svg-node-text">RAW DATASET</text>
                                         </g>
 
                                         <!-- FLOW 1 -->
@@ -276,8 +294,8 @@
                                         <!-- FEATURE ENGINEERING -->
                                         <g class="node-arch" onclick="showArchDetail('engineering')">
                                             <rect x="170" y="160" width="120" height="80" rx="10" fill="#1e293b" stroke="#6366f1" stroke-width="2" />
-                                            <text x="230" y="195" font-family="Inter" font-size="10" text-anchor="middle" fill="#f8fafc" font-weight="bold">FEATURE</text>
-                                            <text x="230" y="210" font-family="Inter" font-size="10" text-anchor="middle" fill="#f8fafc" font-weight="bold">ENGINEERING</text>
+                                            <text x="230" y="195" font-family="Inter" font-size="10" text-anchor="middle" class="svg-node-text">FEATURE</text>
+                                            <text x="230" y="210" font-family="Inter" font-size="10" text-anchor="middle" class="svg-node-text">ENGINEERING</text>
                                         </g>
 
                                         <!-- FLOW 2 -->
@@ -286,7 +304,7 @@
                                         <!-- ENGINE BOX -->
                                         <g class="node-arch" onclick="showArchDetail('forest')">
                                             <rect x="330" y="110" width="300" height="180" rx="15" fill="rgba(15, 23, 42, 0.95)" stroke="#38bdf8" stroke-width="2" />
-                                            <text x="480" y="135" font-family="Inter" font-size="12" font-weight="900" text-anchor="middle" fill="#f8fafc" letter-spacing="1">ISOLATION FOREST ENGINE</text>
+                                            <text x="480" y="135" font-family="Inter" font-size="12" font-weight="900" text-anchor="middle" class="svg-node-text" letter-spacing="1">ISOLATION FOREST ENGINE</text>
                                             
                                             <!-- ENSEMBLE OF iTREES CONTAINER -->
                                             <rect x="345" y="145" width="270" height="130" rx="12" fill="rgba(16, 185, 129, 0.05)" stroke="#10b981" stroke-width="1" stroke-dasharray="4,2" />
@@ -309,16 +327,16 @@
                                                 <circle cx="10" cy="15" r="2.5"/><circle cx="30" cy="15" r="2.5"/>
                                             </g>
 
-                                            <text x="480" y="245" font-family="Inter" font-size="8" fill="#94a3b8" text-anchor="middle" class="italic">Path Length Calculation E(h(x))</text>
+                                            <text x="480" y="245" font-family="Inter" font-size="8" class="svg-node-text" text-anchor="middle" opacity="0.6" class="italic">Path Length Calculation E(h(x))</text>
                                             
                                             <g class="animate-magnify">
-                                                <circle cx="540" cy="220" r="15" fill="rgba(255,255,255,0.1)" stroke="#f8fafc" stroke-width="1.5" />
-                                                <line x1="552" y1="232" x2="565" y2="245" stroke="#f8fafc" stroke-width="2.5" stroke-linecap="round" />
+                                                <circle cx="540" cy="220" r="15" fill="rgba(255,255,255,0.1)" class="svg-flow-line" />
+                                                <line x1="552" y1="232" x2="565" y2="245" class="svg-flow-line" stroke-width="2.5" stroke-linecap="round" />
                                             </g>
                                         </g>
 
                                         <!-- FLOW 3 -->
-                                        <path class="flow-line-svg" d="M 630 200 L 680 200" stroke="#f8fafc" stroke-width="2" fill="none" />
+                                        <path class="svg-flow-line" d="M 630 200 L 680 200" fill="none" />
 
                                         <!-- ARTIFACT -->
                                         <g class="node-arch" onclick="showArchDetail('artifact')">
@@ -329,23 +347,23 @@
 
                                         <!-- REGISTRY -->
                                         <g class="node-arch" onclick="showArchDetail('registry')">
-                                            <path d="M 850 150 Q 880 120 910 150 T 970 150 Q 970 210 850 210 Z" fill="#1e293b" stroke="#f8fafc" stroke-width="2" />
-                                            <text x="910" y="175" font-family="Inter" font-size="10" text-anchor="middle" fill="#f8fafc" font-weight="bold">MODEL</text>
-                                            <text x="910" y="190" font-family="Inter" font-size="10" text-anchor="middle" fill="#f8fafc" font-weight="bold">REGISTRY</text>
+                                            <path d="M 850 150 Q 880 120 910 150 T 970 150 Q 970 210 850 210 Z" fill="#1e293b" class="svg-flow-line" stroke-width="2" />
+                                            <text x="910" y="175" font-family="Inter" font-size="10" text-anchor="middle" class="svg-node-text">MODEL</text>
+                                            <text x="910" y="190" font-family="Inter" font-size="10" text-anchor="middle" class="svg-node-text">REGISTRY</text>
                                         </g>
 
                                         <!-- FLOW 4 -->
-                                        <path d="M 760 200 L 850 180" stroke="#f8fafc" stroke-width="1" fill="none" stroke-dasharray="4,4" />
+                                        <path d="M 760 200 L 850 180" class="svg-flow-line" fill="none" stroke-dasharray="4,4" />
 
                                         <!-- ONLINE INFERENCE BOX -->
-                                        <rect x="20" y="330" width="960" height="250" rx="15" fill="rgba(30, 41, 59, 0.3)" stroke="rgba(255, 255, 255, 0.1)" stroke-dasharray="5,5" />
-                                        <text x="40" y="355" font-family="Inter" font-size="14" font-weight="bold" fill="#94a3b8">ONLINE INFERENCE</text>
+                                        <rect x="20" y="330" width="960" height="250" rx="15" class="svg-box-bg" stroke-dasharray="5,5" />
+                                        <text x="40" y="355" font-family="Inter" font-size="14" font-weight="bold" class="svg-text-label">ONLINE INFERENCE</text>
 
                                         <!-- LIVE DATA -->
                                         <g class="node-arch" onclick="showArchDetail('live')">
                                             <rect x="40" y="450" width="160" height="80" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2" />
-                                            <text x="120" y="485" font-family="Inter" font-size="10" text-anchor="middle" fill="#f8fafc" font-weight="bold">LIVE DATA STREAM</text>
-                                            <text x="120" y="500" font-family="Inter" font-size="8" text-anchor="middle" fill="#94a3b8">(Real-time network logs)</text>
+                                            <text x="120" y="485" font-family="Inter" font-size="10" text-anchor="middle" class="svg-node-text">LIVE DATA STREAM</text>
+                                            <text x="120" y="500" font-family="Inter" font-size="8" text-anchor="middle" class="svg-node-text" opacity="0.7">(Real-time network logs)</text>
                                         </g>
 
                                         <!-- FLOW 5 -->
@@ -354,19 +372,19 @@
                                         <!-- ALERT & MITIGATION -->
                                         <g class="node-arch" onclick="showArchDetail('alert')">
                                             <rect x="240" y="450" width="110" height="80" rx="10" fill="#1e293b" stroke="#ef4444" stroke-width="2" />
-                                            <text x="295" y="485" font-family="Inter" font-size="10" text-anchor="middle" fill="#f8fafc" font-weight="bold">ALERT &</text>
-                                            <text x="295" y="500" font-family="Inter" font-size="10" text-anchor="middle" fill="#f8fafc" font-weight="bold">MITIGATION</text>
+                                            <text x="295" y="485" font-family="Inter" font-size="10" text-anchor="middle" class="svg-node-text">ALERT &</text>
+                                            <text x="295" y="500" font-family="Inter" font-size="10" text-anchor="middle" class="svg-node-text">MITIGATION</text>
                                         </g>
 
                                         <!-- DECISION GATEWAY -->
-                                        <path d="M 350 490 L 480 490" stroke="#f8fafc" stroke-width="1" fill="none" />
+                                        <path d="M 350 490 L 480 490" class="svg-flow-line" fill="none" />
                                         <text x="415" y="480" font-family="Inter" font-size="8" text-anchor="middle" fill="#94a3b8">DECISION GATEWAY</text>
 
                                         <!-- PREPROCESSING -->
                                         <g class="node-arch" onclick="showArchDetail('preprocess')">
                                             <rect x="480" y="450" width="130" height="80" rx="10" fill="#1e293b" stroke="#6366f1" stroke-width="2" />
-                                            <text x="545" y="485" font-family="Inter" font-size="10" text-anchor="middle" fill="#f8fafc" font-weight="bold">REAL-TIME</text>
-                                            <text x="545" y="500" font-family="Inter" font-size="10" text-anchor="middle" fill="#f8fafc" font-weight="bold">PREPROCESSING</text>
+                                            <text x="545" y="485" font-family="Inter" font-size="10" text-anchor="middle" class="svg-node-text">REAL-TIME</text>
+                                            <text x="545" y="500" font-family="Inter" font-size="10" text-anchor="middle" class="svg-node-text">PREPROCESSING</text>
                                         </g>
 
                                         <!-- FLOW 6 -->
@@ -376,7 +394,7 @@
                                         <g class="node-arch" onclick="showArchDetail('inference')">
                                             <rect x="660" y="430" width="220" height="120" rx="15" fill="#1e293b" stroke="#38bdf8" stroke-width="3" />
                                             <text x="770" y="480" font-family="FontAwesome" font-size="40" text-anchor="middle" fill="#38bdf8">&#xf1bb;</text>
-                                            <text x="770" y="520" font-family="Inter" font-size="12" text-anchor="middle" fill="#f8fafc" font-weight="black">INFERENCE SERVICE</text>
+                                            <text x="770" y="520" font-family="Inter" font-size="12" text-anchor="middle" class="svg-node-text">INFERENCE SERVICE</text>
                                         </g>
 
                                         <!-- ANOMALY SCORE BOX -->
@@ -387,11 +405,11 @@
                                         <path d="M 700 420 L 700 430" stroke="#10b981" stroke-width="1" fill="none" />
 
                                         <!-- CONNECT REGISTRY TO INFERENCE -->
-                                        <path d="M 910 210 L 910 490 L 880 490" stroke="#f8fafc" stroke-width="1" fill="none" stroke-dasharray="5,5" />
+                                        <path d="M 910 210 L 910 490 L 880 490" class="svg-flow-line" fill="none" stroke-dasharray="5,5" />
                                         
                                         <!-- FEEDBACK LOOP -->
-                                        <path d="M 295 450 L 295 380 L 230 380 L 230 240" stroke="#f8fafc" stroke-width="1" fill="none" stroke-dasharray="5,5" />
-                                        <text x="350" y="375" font-family="Inter" font-size="10" fill="#f8fafc">FEEDBACK LOOP</text>
+                                        <path d="M 295 450 L 295 380 L 230 380 L 230 240" class="svg-flow-line" fill="none" stroke-dasharray="5,5" />
+                                        <text x="350" y="375" font-family="Inter" font-size="10" class="svg-text-label">FEEDBACK LOOP</text>
 
                                         <style>
                                             .node-arch { transition: all 0.3s; cursor: pointer; }
@@ -407,22 +425,22 @@
                                 </div>
                                 
                                     <!-- Interactive Detail Card (Complex Arch) -->
-                                    <div id="archDetailCard" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[400px] bg-bg-card/95 backdrop-blur-2xl p-6 md:p-10 rounded-[2.5rem] border border-sky-500/30 hidden animate-zoom-in shadow-[0_0_100px_rgba(0,0,0,0.5)] z-[60]">
+                                    <div id="archDetailCard" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[450px] bg-white dark:bg-bg-card backdrop-blur-3xl p-6 md:p-10 rounded-[2.5rem] border-2 border-sky-500/50 hidden animate-zoom-in shadow-[0_20px_50px_rgba(0,0,0,0.2)] dark:shadow-2xl z-[60]">
                                         <div class="flex items-center gap-6 mb-8">
-                                            <div id="archDetailIcon" class="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-sky-500/10 flex items-center justify-center text-xl md:text-3xl text-sky-500"></div>
+                                            <div id="archDetailIcon" class="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-sky-500/10 flex items-center justify-center text-xl md:text-3xl text-sky-500 shadow-inner"></div>
                                             <div>
-                                                <h4 id="archDetailTitle" class="text-lg md:text-xl font-black text-primary-theme uppercase tracking-tighter">Node Title</h4>
+                                                <h4 id="archDetailTitle" class="text-lg md:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Node Title</h4>
                                                 <p id="archDetailSub" class="text-[10px] text-sky-500 font-mono tracking-widest uppercase">System Component</p>
                                             </div>
                                         </div>
-                                        <p id="archDetailText" class="text-xs md:text-sm text-body-theme leading-relaxed mb-10"></p>
-                                        <button onclick="hideArchDetail()" class="w-full py-4 bg-accent-theme hover:bg-bg-card-hover border border-main rounded-2xl text-xs font-bold text-primary-theme transition-all uppercase tracking-[0.2em]">Close Technical Brief</button>
+                                        <p id="archDetailText" class="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-10 font-medium"></p>
+                                        <button onclick="hideArchDetail()" class="w-full py-4 bg-sky-500 hover:bg-sky-400 border border-white/10 rounded-2xl text-[11px] font-black text-white transition-all uppercase tracking-[0.2em] shadow-lg shadow-sky-500/30">Close Technical Brief</button>
                                     </div>
                             </div>
                         </div>
 
                         <!-- Full Lifecycle Specs -->
-                        <div class="bg-black/40 p-10 border-t border-main grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+                        <div class="bg-accent-theme/20 dark:bg-black/40 p-10 border-t border-main grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
                             <div>
                                 <p class="text-[10px] text-muted-theme uppercase mb-2 tracking-widest">Training Type</p>
                                 <p class="text-sm font-black text-sky-500">Unsupervised Offline</p>
@@ -443,28 +461,28 @@
                     </div>
                     <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-2 md:px-4">
                         <!-- Card 01 -->
-                        <div class="p-6 md:p-8 bg-bg-card/40 backdrop-blur-xl rounded-[2rem] border border-white/5 hover:border-sky-500/30 transition-all duration-500 hover:-translate-y-2 group shadow-lg">
+                        <div class="p-6 md:p-8 bg-accent-theme/40 dark:bg-bg-card/40 backdrop-blur-xl rounded-[2rem] border border-main hover:border-sky-500/30 transition-all duration-500 hover:-translate-y-2 group shadow-lg">
                             <div class="w-10 h-10 md:w-12 md:h-12 bg-sky-500/10 rounded-xl flex items-center justify-center text-sky-500 mb-4 md:mb-6 group-hover:scale-110 transition-transform">
                                 <i class="fas fa-filter text-lg md:text-xl"></i>
                             </div>
                             <h4 class="text-sky-400 font-black mb-2 md:mb-3 uppercase text-[10px] tracking-[0.3em]">01. Sub-Sampling</h4>
-                            <p class="text-[11px] text-body-theme leading-relaxed opacity-80">Mengambil sampel acak kecil untuk menghindari masalah <b class="text-sky-400">Masking</b> dan <b class="text-sky-400">Swamping</b> pada dataset besar.</p>
+                            <p class="text-[11px] text-body-theme leading-relaxed opacity-90 font-medium">Mengambil sampel acak kecil untuk menghindari masalah <b class="text-sky-400 shadow-sm">Masking</b> dan <b class="text-sky-400 shadow-sm">Swamping</b> pada dataset besar.</p>
                         </div>
                         <!-- Card 02 -->
-                        <div class="p-6 md:p-8 bg-bg-card/40 backdrop-blur-xl rounded-[2rem] border border-white/5 hover:border-indigo-500/30 transition-all duration-500 hover:-translate-y-2 group shadow-lg">
+                        <div class="p-6 md:p-8 bg-accent-theme/40 dark:bg-bg-card/40 backdrop-blur-xl rounded-[2rem] border border-main hover:border-indigo-500/30 transition-all duration-500 hover:-translate-y-2 group shadow-lg">
                             <div class="w-10 h-10 md:w-12 md:h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-500 mb-4 md:mb-6 group-hover:scale-110 transition-transform">
                                 <i class="fas fa-project-diagram text-lg md:text-xl"></i>
                             </div>
                             <h4 class="text-indigo-400 font-black mb-2 md:mb-3 uppercase text-[10px] tracking-[0.3em]">02. Ensemble Forest</h4>
-                            <p class="text-[11px] text-body-theme leading-relaxed opacity-80">Membangun ratusan <b class="text-indigo-400">iTrees</b> secara independen untuk mendapatkan hasil deteksi yang lebih objektif dan stabil.</p>
+                            <p class="text-[11px] text-body-theme leading-relaxed opacity-90 font-medium">Membangun ratusan <b class="text-indigo-400 shadow-sm">iTrees</b> secara independen untuk mendapatkan hasil deteksi yang lebih objektif dan stabil.</p>
                         </div>
                         <!-- Card 03 -->
-                        <div class="p-6 md:p-8 bg-bg-card/40 backdrop-blur-xl rounded-[2rem] border border-white/5 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-2 group shadow-lg">
+                        <div class="p-6 md:p-8 bg-accent-theme/40 dark:bg-bg-card/40 backdrop-blur-xl rounded-[2rem] border border-main hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-2 group shadow-lg">
                             <div class="w-10 h-10 md:w-12 md:h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-500 mb-4 md:mb-6 group-hover:scale-110 transition-transform">
                                 <i class="fas fa-chart-line text-lg md:text-xl"></i>
                             </div>
                             <h4 class="text-emerald-400 font-black mb-2 md:mb-3 uppercase text-[10px] tracking-[0.3em]">03. Final Scoring</h4>
-                            <p class="text-[11px] text-body-theme leading-relaxed opacity-80">Mengkalkulasi rata-rata panjang jalur dan menormalisasinya menjadi skor <b class="text-emerald-400">0 - 1</b> untuk identifikasi anomali.</p>
+                            <p class="text-[11px] text-body-theme leading-relaxed opacity-90 font-medium">Mengkalkulasi rata-rata panjang jalur dan menormalisasinya menjadi skor <b class="text-emerald-400 shadow-sm">0 - 1</b> untuk identifikasi anomali.</p>
                         </div>
                     </div>
 
