@@ -88,9 +88,17 @@ body::before {
     background: var(--bg-card);
     backdrop-filter: blur(10px);
     border: 1px solid var(--border-main);
-    border-radius: 2rem;
+    border-radius: 1.5rem; /* Slightly smaller radius for mobile */
     transition: all 0.4s ease;
+    padding: 1.5rem; /* Default mobile padding */
     overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .tech-card {
+        border-radius: 2rem;
+        padding: 3rem; /* md:p-12 equivalent */
+    }
 }
 
 .tech-card:hover {
@@ -144,12 +152,18 @@ body::before {
 /* Canvas Dark Mode */
 #isoCanvas {
     width: 100%;
-    height: 400px;
+    height: 300px; /* Default height for mobile */
     display: block;
     background: var(--canvas-bg);
     border-radius: 1.5rem;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
     transition: background-color 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    #isoCanvas {
+        height: 400px;
+    }
 }
 
 .dark #isoCanvas {

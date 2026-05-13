@@ -47,26 +47,25 @@
                 </div>
 
                 <!-- Theme Toggle (Visible on all screens) -->
-                <div class="flex items-center gap-1 bg-accent-theme p-1 rounded-2xl border border-main scale-90 md:scale-100">
-                    <button onclick="setTheme('light')" data-theme-btn="light" class="p-2 rounded-xl text-sm transition-all flex items-center justify-center w-8 h-8 md:w-9 md:h-9" title="Light Mode">
+                <div class="flex items-center gap-1 bg-accent-theme p-1 rounded-2xl border border-main scale-100">
+                    <button onclick="setTheme('light')" data-theme-btn="light" class="p-2.5 rounded-xl text-base transition-all flex items-center justify-center w-10 h-10 md:w-9 md:h-9" title="Light Mode">
                         <i class="fas fa-sun"></i>
                     </button>
-                    <button onclick="setTheme('dark')" data-theme-btn="dark" class="p-2 rounded-xl text-sm transition-all flex items-center justify-center w-8 h-8 md:w-9 md:h-9" title="Dark Mode">
+                    <button onclick="setTheme('dark')" data-theme-btn="dark" class="p-2.5 rounded-xl text-base transition-all flex items-center justify-center w-10 h-10 md:w-9 md:h-9" title="Dark Mode">
                         <i class="fas fa-moon"></i>
                     </button>
-                    <button onclick="setTheme('system')" data-theme-btn="system" class="p-2 rounded-xl text-sm transition-all flex items-center justify-center w-8 h-8 md:w-9 md:h-9" title="System Mode">
+                    <button onclick="setTheme('system')" data-theme-btn="system" class="p-2.5 rounded-xl text-base transition-all flex items-center justify-center w-10 h-10 md:w-9 md:h-9" title="System Mode">
                         <i class="fas fa-desktop"></i>
                     </button>
                 </div>
             </div>
             
-            <!-- Bottom Row (Mobile) / Right Side (Desktop): Navigation -->
             <div class="w-full md:w-auto">
                 <div class="flex items-center gap-1 bg-accent-theme p-1 rounded-2xl border border-main overflow-x-auto no-scrollbar w-full md:w-auto">
-                    <button onclick="openTab('pengenalan')" id="btn-pengenalan" class="tab-btn px-4 md:px-6 py-2 rounded-xl text-[10px] md:text-sm font-semibold transition-all bg-sky-500 text-white whitespace-nowrap">01. INTRO</button>
-                    <button onclick="openTab('teori')" id="btn-teori" class="tab-btn px-4 md:px-6 py-2 rounded-xl text-[10px] md:text-sm font-semibold transition-all text-muted-theme hover:text-sky-500 hover:bg-bg-accent whitespace-nowrap">02. LOGIC</button>
-                    <button onclick="openTab('simulasi')" id="btn-simulasi" class="tab-btn px-4 md:px-6 py-2 rounded-xl text-[10px] md:text-sm font-semibold transition-all text-muted-theme hover:text-sky-500 hover:bg-bg-accent whitespace-nowrap">03. SIMULASI</button>
-                    <button onclick="openTab('kesimpulan')" id="btn-kesimpulan" class="tab-btn px-4 md:px-6 py-2 rounded-xl text-[10px] md:text-sm font-semibold transition-all text-muted-theme hover:text-sky-500 hover:bg-bg-accent whitespace-nowrap">04. FINAL</button>
+                    <button onclick="openTab('pengenalan')" id="btn-pengenalan" class="tab-btn px-4 md:px-6 py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all bg-sky-500 text-white whitespace-nowrap">01. INTRO</button>
+                    <button onclick="openTab('teori')" id="btn-teori" class="tab-btn px-4 md:px-6 py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all text-muted-theme hover:text-sky-500 hover:bg-bg-accent whitespace-nowrap">02. LOGIC</button>
+                    <button onclick="openTab('simulasi')" id="btn-simulasi" class="tab-btn px-4 md:px-6 py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all text-muted-theme hover:text-sky-500 hover:bg-bg-accent whitespace-nowrap">03. SIMULASI</button>
+                    <button onclick="openTab('kesimpulan')" id="btn-kesimpulan" class="tab-btn px-4 md:px-6 py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all text-muted-theme hover:text-sky-500 hover:bg-bg-accent whitespace-nowrap">04. FINAL</button>
                 </div>
             </div>
         </div>
@@ -78,12 +77,12 @@
         <!-- SECTION 1: PENGENALAN (THE COMPREHENSIVE FOUNDATION) -->
         <section id="pengenalan" class="tab-content active animate-step">
             <!-- 0.1: Hirarki Pengetahuan (AI & ML) -->
-            <div class="tech-card p-6 md:p-12 mb-20 bg-gradient-to-br from-bg-card to-bg-accent border-b-4 border-b-sky-500">
+            <div class="tech-card p-5 md:p-12 mb-20 bg-gradient-to-br from-bg-card to-bg-accent border-b-4 border-b-sky-500">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div class="space-y-8">
                         <div>
                             <span class="text-sky-600 dark:text-sky-400 font-mono tracking-[0.4em] text-sm uppercase mb-4 block">Academic_Foundation_V2.0</span>
-                            <h2 class="text-3xl md:text-5xl font-black text-primary-theme leading-tight uppercase">Artificial <br><span class="text-sky-600 dark:text-sky-400 italic font-serif">Intelligence</span></h2>
+                            <h2 class="text-3xl md:text-5xl font-black text-primary-theme leading-tight uppercase">Artificial <br class="hidden md:block"><span class="text-sky-600 dark:text-sky-400 italic font-serif">Intelligence</span></h2>
                         </div>
                         <div class="grid grid-cols-1 gap-6">
                             <!-- Definisi AI -->
@@ -158,8 +157,8 @@
                         <div class="absolute -right-20 -top-20 text-[15rem] text-primary-theme opacity-5 font-black group-hover:scale-110 transition-transform">AI</div>
                         
                         <span class="text-sky-600 dark:text-sky-400 font-mono tracking-[0.4em] text-sm uppercase mb-6 block">The_Core_Knowledge</span>
-                        <h1 class="text-5xl font-black text-primary-theme leading-tight uppercase mb-10">
-                            Anomaly Detection <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 font-serif font-light">(Isolation Forest)</span>
+                        <h1 class="text-3xl md:text-5xl font-black text-primary-theme leading-tight uppercase mb-10">
+                            Anomaly Detection <br class="hidden md:block"><span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 font-serif font-light text-2xl md:text-4xl">(Isolation Forest)</span>
                         </h1>
 
                         <div class="grid grid-cols-1 gap-8">
@@ -233,11 +232,11 @@
                                 </div>
                             </div>
 
-                            <div class="relative overflow-hidden bg-accent-theme/40 dark:bg-black/40 rounded-[3rem] border border-main p-4">
-                                <!-- Inlined SVG for Interactivity -->
-                                <div id="complex-arch-container">
+                            <div class="relative overflow-hidden bg-accent-theme/40 dark:bg-black/40 rounded-[2rem] md:rounded-[3rem] border border-main p-2 md:p-4">
+                                <!-- Scrollable Container for Mobile SVG Readability -->
+                                <div id="complex-arch-container" class="overflow-x-auto pb-4">
                                     <!-- The SVG I just created in assets will be inlined here -->
-                                    <svg id="ai-architecture-svg" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+                                    <svg id="ai-architecture-svg" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" class="min-w-[800px] lg:min-w-full h-auto">
                                         <!-- Background / Container -->
                                         <rect width="1000" height="600" rx="20" fill="rgba(15, 23, 42, 0)" />
                                         
@@ -440,22 +439,22 @@
                         </div>
 
                         <!-- Full Lifecycle Specs -->
-                        <div class="bg-accent-theme/20 dark:bg-black/40 p-10 border-t border-main grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+                        <div class="bg-accent-theme/20 dark:bg-black/40 p-6 md:p-10 border-t border-main grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center">
                             <div>
-                                <p class="text-[10px] text-muted-theme uppercase mb-2 tracking-widest">Training Type</p>
-                                <p class="text-sm font-black text-sky-500">Unsupervised Offline</p>
+                                <p class="text-[10px] text-muted-theme uppercase mb-1 md:mb-2 tracking-widest">Training Type</p>
+                                <p class="text-xs md:text-sm font-black text-sky-500">Unsupervised Offline</p>
                             </div>
                             <div>
-                                <p class="text-[10px] text-muted-theme uppercase mb-2 tracking-widest">Inference Mode</p>
-                                <p class="text-sm font-black text-indigo-500">Real-time Stream</p>
+                                <p class="text-[10px] text-muted-theme uppercase mb-1 md:mb-2 tracking-widest">Inference Mode</p>
+                                <p class="text-xs md:text-sm font-black text-indigo-500">Real-time Stream</p>
                             </div>
                             <div>
-                                <p class="text-[10px] text-muted-theme uppercase mb-2 tracking-widest">Model Sync</p>
-                                <p class="text-sm font-black text-emerald-500">Registry-Aware</p>
+                                <p class="text-[10px] text-muted-theme uppercase mb-1 md:mb-2 tracking-widest">Model Sync</p>
+                                <p class="text-xs md:text-sm font-black text-emerald-500">Registry-Aware</p>
                             </div>
                             <div>
-                                <p class="text-[10px] text-muted-theme uppercase mb-2 tracking-widest">Fault Tolerance</p>
-                                <p class="text-sm font-black text-rose-500">Feedback-Enabled</p>
+                                <p class="text-[10px] text-muted-theme uppercase mb-1 md:mb-2 tracking-widest">Fault Tolerance</p>
+                                <p class="text-xs md:text-sm font-black text-rose-500">Feedback-Enabled</p>
                             </div>
                         </div>
                     </div>
@@ -493,7 +492,7 @@
             </div>
 
             <!-- 1.2: Data Mining Perspective -->
-            <div class="tech-card p-10 mb-24 border-r-4 border-r-sky-500 bg-accent-theme shadow-xl relative z-10">
+            <div class="tech-card p-6 md:p-10 mb-24 border-r-4 border-r-sky-500 bg-accent-theme shadow-xl relative z-10">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div class="p-4 bg-sky-500/5 rounded-3xl border border-sky-500/10">
                         <img src="assets/data_mining_kdd.svg" alt="KDD Pipeline" class="w-full h-auto rounded-xl">
@@ -643,7 +642,7 @@
             </div>
 
             <!-- 1.5: Riset Internasional (Russia & Serbia) -->
-            <div class="tech-card p-10 border-l-4 border-l-rose-600 bg-accent-theme">
+            <div class="tech-card p-6 md:p-10 border-l-4 border-l-rose-600 bg-accent-theme">
                 <h3 class="text-xl font-bold text-primary-theme mb-6 uppercase tracking-widest flex items-center gap-3">
                     <i class="fas fa-globe-europe text-rose-500"></i> Perspektif Riset Rusia & Serbia
                 </h3>
@@ -675,9 +674,9 @@
                         <div class="flex items-center gap-4 mb-8 p-4 bg-accent-theme/20 rounded-3xl border border-main/50">
                             <span class="text-[10px] font-bold text-muted-theme uppercase tracking-widest ml-2">Complexity:</span>
                             <div class="flex bg-bg-main p-1 rounded-2xl border border-main gap-1">
-                                <button onclick="setSimLevel(1)" id="lvl-1" class="lvl-btn px-4 py-2 rounded-xl text-[10px] font-bold transition-all bg-sky-500 text-white shadow-lg shadow-sky-500/20">BASIC</button>
-                                <button onclick="setSimLevel(2)" id="lvl-2" class="lvl-btn px-4 py-2 rounded-xl text-[10px] font-bold transition-all text-muted-theme hover:text-sky-500">COMPLEX</button>
-                                <button onclick="setSimLevel(3)" id="lvl-3" class="lvl-btn px-4 py-2 rounded-xl text-[10px] font-bold transition-all text-muted-theme hover:text-sky-500">EXTREME</button>
+                                <button onclick="setSimLevel(1)" id="lvl-1" class="lvl-btn px-3 md:px-4 py-2 rounded-xl text-[11px] md:text-[10px] font-bold transition-all bg-sky-500 text-white shadow-lg shadow-sky-500/20">BASIC</button>
+                                <button onclick="setSimLevel(2)" id="lvl-2" class="lvl-btn px-3 md:px-4 py-2 rounded-xl text-[11px] md:text-[10px] font-bold transition-all text-muted-theme hover:text-sky-500">COMPLEX</button>
+                                <button onclick="setSimLevel(3)" id="lvl-3" class="lvl-btn px-3 md:px-4 py-2 rounded-xl text-[11px] md:text-[10px] font-bold transition-all text-muted-theme hover:text-sky-500">EXTREME</button>
                             </div>
                         </div>
                         <div class="flex flex-wrap gap-4">
@@ -690,13 +689,13 @@
                         </div>
                     </div>
                     <div class="space-y-6">
-                        <div class="p-8 bg-rose-500/10 rounded-3xl border border-rose-500/20">
+                        <div class="p-6 md:p-8 bg-rose-500/10 rounded-3xl border border-rose-500/20">
                             <h4 class="text-rose-600 dark:text-rose-400 font-bold mb-2 uppercase text-[10px] tracking-widest">Anomaly Steps (h)</h4>
-                            <div class="text-7xl font-black text-rose-500" id="stat-anomaly">0</div>
+                            <div class="text-5xl md:text-7xl font-black text-rose-500" id="stat-anomaly">0</div>
                         </div>
-                        <div class="p-8 bg-sky-500/10 rounded-3xl border border-sky-500/20">
+                        <div class="p-6 md:p-8 bg-sky-500/10 rounded-3xl border border-sky-500/20">
                             <h4 class="text-sky-600 dark:text-sky-400 font-bold mb-2 uppercase text-[10px] tracking-widest">Normal Steps (h)</h4>
-                            <div class="text-7xl font-black text-sky-500" id="stat-normal">0</div>
+                            <div class="text-5xl md:text-7xl font-black text-sky-500" id="stat-normal">0</div>
                         </div>
                         <div id="sim-conclusion" class="hidden p-6 bg-emerald-500/10 rounded-3xl border border-emerald-500/20">
                             <p class="text-emerald-600 dark:text-emerald-400 text-xs font-bold leading-relaxed uppercase tracking-tighter">
@@ -707,7 +706,7 @@
                 </div>
                  <!-- Bedah Logika & Analisis Hasil -->
                 <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <div class="tech-card p-10 bg-accent-theme/30">
+                    <div class="tech-card p-6 md:p-10 bg-accent-theme/30">
                         <h3 class="text-xl font-bold text-primary-theme mb-8 flex items-center gap-3 uppercase tracking-widest">
                             <i class="fas fa-microchip text-sky-500"></i> Bedah Logika Simulasi
                         </h3>
@@ -724,7 +723,7 @@
                     </div>
 
                     <!-- Analisis Hasil Komprehensif -->
-                    <div class="tech-card p-10 bg-indigo-500/5 relative overflow-hidden">
+                    <div class="tech-card p-6 md:p-10 bg-indigo-500/5 relative overflow-hidden">
                         <div class="absolute -right-10 -bottom-10 text-9xl text-indigo-500/5 font-black uppercase">DATA</div>
                         <h3 class="text-xl font-bold text-primary-theme mb-8 flex items-center gap-3 uppercase tracking-widest">
                             <i class="fas fa-chart-line text-indigo-500"></i> Analisis Hasil & Interpretasi
@@ -750,12 +749,12 @@
 
         <!-- SECTION 4: KESIMPULAN (THE WISDOM) -->
         <section id="kesimpulan" class="tab-content animate-step">
-            <div class="tech-card p-16 bg-gradient-to-br from-bg-card to-indigo-500/10 relative overflow-hidden mb-16">
+            <div class="tech-card p-8 md:p-16 bg-gradient-to-br from-bg-card to-indigo-500/10 relative overflow-hidden mb-16">
                 <div class="relative z-10">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
                         <div class="space-y-6">
                             <span class="text-sky-600 dark:text-sky-400 font-mono text-sm mb-4 block tracking-[0.4em]">FINAL_REPORT</span>
-                            <h2 class="text-5xl font-black text-primary-theme leading-tight uppercase">Wisdom in <br>Anomalies</h2>
+                            <h2 class="text-3xl md:text-5xl font-black text-primary-theme leading-tight uppercase">Wisdom in <br class="hidden md:block">Anomalies</h2>
                             <p class="text-body-theme text-lg leading-relaxed">
                                 Kita telah menelusuri materi dari kulit, daging, hingga sumsum tulangnya. Isolation Forest adalah bukti bahwa keunikan adalah kunci untuk memahami kebenaran dalam data raksasa.
                             </p>
